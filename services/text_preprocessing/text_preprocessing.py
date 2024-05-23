@@ -1,61 +1,90 @@
-import ir_datasets
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import nltk
+from typing import List
 from nltk.corpus import stopwords, wordnet
 from nltk.stem import PorterStemmer, WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk import pos_tag
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-import string
-import pandas as pd
-import pickle
-import os
 from spellchecker import SpellChecker
+import string
 
-# Load the dataset
-dataset = ir_datasets.load("clinicaltrials/2021/trec-ct-2021")
+app = FastAPI()
 
-# Prepare the corpus with a limit of 3000 documents
-corpus = {}
-counter = 0
-for doc in dataset.docs_iter():
-    if counter < 3000:
-        corpus[doc.doc_id] = doc.title + " " + doc.summary + " " + doc.detailed_description + " " + doc.eligibility
-        counter += 1
-    else:
-        break
 
-documents = list(corpus.values())
+class TextPreprocessor:
+    def __init__(self) -> None:
+        self.tokenizer = word_tokenize
+        self.stopwords_tokens = set(stopwords.words('english'))
+        self.stemmer = PorterStemmer()
+        self.lemmatizer = WordNetLemmatizer()
+        self.spell_checker = SpellChecker()
 
-# Custom tokenizer
-def custom_tokenizer(text: str) -> list[str]:
-    tokens = word_tokenize(text.lower())
-    return tokens
+    def tokenize(self, text: str) -> List[str]:
+        return self.tokenizer(text)
 
-# Helper functions for text preprocessing
-def get_wordnet_pos(tag):
-    tag = tag[0].upper()
-    tag_dict = {"J": wordnet.ADJ, "N": wordnet.NOUN, "V": wordnet.VERB, "R": wordnet.ADV}
-    return tag_dict.get(tag, wordnet.NOUN)
+    @staticmethod
+    def to_lower(tokens: List[str]) -> List[str]:
+        return [token.lower() for token in tokens]
 
-def correct_sentence_spelling(tokens):
-    spell = SpellChecker()
-    misspelled = spell.unknown(tokens)
-    for i, token in enumerate(tokens):
-        if token in misspelled:
-            corrected = spell.correction(token)
-            if corrected is not None:
-                tokens[i] = corrected
-    return tokens
+    @staticmethod
+    def remove_punctuation(tokens: List[str]) -> List[str]:
+        return [token.translate(str.maketrans('', '', string.punctuation)) for token in tokens]
 
-def preprocess_text(text):
-    text = text.lower()
-    words = word_tokenize(text)
-    words = [word.translate(str.maketrans('', '', string.punctuation)) for word in words]
-    stop_words = set(stopwords.words('english'))
-    words = [word for word in words if word not in stop_words]
-    stemmer = PorterStemmer()
-    stemmed_words = [stemmer.stem(word) for word in words]
-    pos_tags = pos_tag(stemmed_words)
-    lemmatizer = WordNetLemmatizer()
-    lemmatized_words = [lemmatizer.lemmatize(word, pos=get_wordnet_pos(tag)) for word, tag in pos_tags]
-    return ' '.join(lemmatized_words)
+    def remove_stop_words(self, tokens: List[str]) -> List[str]:
+        return [token for token in tokens if token not in self.stopwords_tokens]
+
+    def stemming(self, tokens: List[str]) -> List[str]:
+        return [self.stemmer.stem(token) for token in tokens]
+
+    def lemmatizing(self, tokens: List[str]) -> List[str]:
+        pos_tags = pos_tag(tokens)
+        return [self.lemmatizer.lemmatize(token, self.get_wordnet_pos(tag)) for token, tag in pos_tags]
+
+    def correct_spelling(self, tokens: List[str]) -> List[str]:
+        misspelled = self.spell_checker.unknown(tokens)
+        return [self.spell_checker.correction(token) if token in misspelled else token for token in tokens]
+
+    @staticmethod
+    def get_wordnet_pos(tag: str) -> str:
+        tag = tag[0].upper()
+        tag_dict = {
+            'J': wordnet.ADJ,
+            'N': wordnet.NOUN,
+            'V': wordnet.VERB,
+            'R': wordnet.ADV
+        }
+        return tag_dict.get(tag, wordnet.NOUN)
+
+    def preprocess(self, text: str) -> str:
+        # Tokenize
+        tokens = self.tokenize(text)
+        # Convert to lowercase
+        tokens = self.to_lower(tokens)
+        # Correct spelling
+        tokens = self.correct_spelling(tokens)
+        # Remove punctuation
+        tokens = self.remove_punctuation(tokens)
+        # Remove stop words
+        tokens = self.remove_stop_words(tokens)
+        # Stemming
+        tokens = self.stemming(tokens)
+        # Lemmatizing
+        tokens = self.lemmatizing(tokens)
+        # Join tokens back to string
+        return ' '.join(tokens)
+
+
+class TextRequest(BaseModel):
+    text: str
+
+
+@app.post("/preprocess")
+def preprocess_route(request: TextRequest):
+    if not request.text:
+        raise HTTPException(status_code=400, detail="No text provided")
+
+    preprocessor = TextPreprocessor()
+    result = preprocessor.preprocess(request.text)
+
+    return {"processed_text": result}
