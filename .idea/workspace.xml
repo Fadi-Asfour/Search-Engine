@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbe5b022-c237-4ea4-92d8-853eb89766cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/utils/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/index/index.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/matching/query_matching.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebook/clinic (1).ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebook/clinic-Copy1.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/pre_deployment/index/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/pre_deployment/index/index.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/text_preprocessing/text_preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/text_preprocessing/text_preprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/pre_deployment/index/index.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/functions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +47,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HP\Desktop\Search-Engine\services" />
       <recent name="C:\Users\HP\Desktop\Search-Engine\services\pre_deployment\index" />
     </key>
   </component>
