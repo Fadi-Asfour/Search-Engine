@@ -7,7 +7,6 @@ from nltk import pos_tag
 from nltk.corpus import wordnet
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-
 from utils_functions.string_manager import base_host
 
 
