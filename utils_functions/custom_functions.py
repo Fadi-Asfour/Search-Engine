@@ -1,10 +1,11 @@
-
 import nltk
 from nltk.corpus import stopwords, wordnet
 from nltk.stem import PorterStemmer, WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk import pos_tag
 import string
+
+
 def custom_tokenizer(text: str) -> list[str]:
     tokens = word_tokenize(text.lower())
     return tokens
@@ -18,6 +19,8 @@ def get_wordnet_pos(tag):
                 "V": wordnet.VERB,
                 "R": wordnet.ADV}
     return tag_dict.get(tag, wordnet.NOUN)
+
+
 def preprocess_text(text):
     text = text.lower()
 
