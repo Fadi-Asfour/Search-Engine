@@ -19,7 +19,7 @@ from utils_functions.string_manager import base_host, document_vectors_antique, 
 from utils_functions.vectorize_documents import vectorize_documents
 from word_embedding.word_embedding import WordEmbeddingAntique
 
-corpusClinic = DatasetLoader().load_clinicaltrials()  # TODO:
+corpusClinic = DatasetLoader().load_clinicaltrials()
 
 corpusAntique = DatasetLoader().load_antique()
 
@@ -90,18 +90,26 @@ app = FastAPI()
 
 
 @app.post("/query")
-async def query_dataset(request: QueryRequest):
+async def query_dataset(request: QueryRequest, wordEmbedding: bool, userVectors: bool):
     try:
         datasetype = DatasetTypeManager(request.dataset_name)
         if request.dataset_name == "antique":
             corpus = corpusAntique
         else:
-            corpus = corpusClinic  # Assuming corpusClinic is defined somewhere
+            corpus = corpusClinic
 
         query_matching = QueryMatching(datasetype.tfidf_matrix, datasetype.tfidf_model, corpus)
         ranked_indices, similarities = query_matching.process_query(request.query)
 
         results = []
+        if wordEmbedding:
+
+            query_vector = vectorize_documents(request.query)[0].reshape(1, -1)
+            results = query_matching.process_query_word_embedding(request.dataset_name, query_vector)
+        elif userVectors:
+            results = query_matching.process_query_user_vectors(request.query, request.dataset_name)
+        else:
+            ranked_indices, similarities = query_matching.process_query(request.query)
         for idx in ranked_indices[:10]:
             doc_id = list(corpus.values())[idx]
             results.append(doc_id)
