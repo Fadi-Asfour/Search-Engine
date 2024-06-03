@@ -8,7 +8,7 @@ app = FastAPI()
 
 class SearchQuery(BaseModel):
     query: str
-    dataset_path: str
+    dataset_name: str
 
 @app.post("/preprocess")
 async def preprocess_text(request: SearchQuery):
@@ -22,7 +22,7 @@ async def preprocess_text(request: SearchQuery):
 @app.post("/index")
 async def index_dataset(request: SearchQuery):
     try:
-        response = requests.post(base_url+":8002/index", json={"dataset_path": request.dataset_path})
+        response = requests.post(base_url+":8002/index", json={"dataset_name": request.dataset_name})
         response.raise_for_status()
         return response.json()
     except requests.exceptions.RequestException as e:
@@ -46,11 +46,11 @@ async def search(data: SearchQuery):
         processed_query = preprocess_response.json().get("processed_text")
 
         # Step 2: Index the dataset (if not already indexed)
-       # index_response = requests.post(base_url+":8002/index", json={"dataset_path": data.dataset_path})
+       # index_response = requests.post(base_url+":8002/index", json={"dataset_name": data.dataset_name})
         # index_response.raise_for_status()
 
         # Step 3: Query the dataset with the processed query
-        query_response = requests.post(base_url+":8007/query", json={"query": processed_query, "dataset_path": data.dataset_path})
+        query_response = requests.post(base_url+":8007/query", json={"query": processed_query, "dataset_name": data.dataset_name})
         query_response.raise_for_status()
         documents = query_response.json().get("results")
 

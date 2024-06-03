@@ -1,0 +1,14 @@
+# Ignore Python cache files
+pycache/
+pycache/*
+
+# Ignore virtual environment directory
+.venv/
+.venv/*
+
+# Ignore JetBrains IDE (e.g., PyCharm) project files
+.idea/
+.idea/*
+
+.git/
+.git/*

@@ -13,7 +13,10 @@ def print_hi(name):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    c=123
+    c="antique"
     print_hi('PyCharm')
+    if "antique"==c:
+        print("ddddddddd")
+
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
