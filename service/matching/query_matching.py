@@ -119,5 +119,4 @@ async def query_dataset(request: QueryRequest, wordEmbedding: bool, userVectors:
 
 
 if __name__ == '__main__':
-    base_host = '127.0.0.1'  # Define your base_host
     uvicorn.run("query_matching:app", host=base_host, port=8007, reload=True)

@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbe5b022-c237-4ea4-92d8-853eb89766cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/entry_point.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Search Engine.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebook/clinic-Copy3.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebook/prAntique-Copy1 (1).ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/matching/query_matching.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/text_preprocessing/text_preprocessor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils_functions/string_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils_functions/string_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/matching/query_matching.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/matching/query_matching.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +45,7 @@
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/fadia/PycharmProjects/Search-Engine",
+    "last_opened_file_path": "C:/Users/fadia/PycharmProjects/Search-Engine3",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
