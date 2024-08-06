@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from sklearn.feature_extraction.text import TfidfVectorizer
+from starlette.middleware.cors import CORSMiddleware
 
 from service.text_preprocessing.text_preprocessor import TextPreprocessing
 from utils_functions.dataset_load import DatasetLoader
@@ -30,7 +31,15 @@ class TFIDFVectorizerService:
         FilesFunctions().store_model(self.tfidf_matrix, self.tfidf_model, datasetype.tfidf_matrix, datasetype.tfidf_model)
 
 app = FastAPI()
+origins = ["*"]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 class DatasetRequest(BaseModel):
     dataset_name: str
 
@@ -46,4 +55,4 @@ async def index_dataset(request: DatasetRequest):
 
 if __name__ == '__main__':
     import uvicorn
-    uvicorn.run("indexing:app", host=base_host, port=8008, reload=True)
+    uvicorn.run("indexing:app", host=base_host, port=8004, reload=True)

@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbe5b022-c237-4ea4-92d8-853eb89766cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/matching/query_matching.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/matching/query_matching.py" afterDir="false" />
-    </list>
+    <list default="true" id="fbe5b022-c237-4ea4-92d8-853eb89766cc" name="Changes" comment="" />
+
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,27 +32,32 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.crawling_matching.executor": "Run",
     "Python.entry_point.executor": "Run",
     "Python.indexing.executor": "Run",
+    "Python.matching_with_embedding_service.executor": "Run",
     "Python.query_matching (1).executor": "Run",
     "Python.query_matching.executor": "Run",
     "Python.text_preprocessor (1).executor": "Run",
     "Python.text_preprocessor.executor": "Run",
+    "Python.vectore_store_match.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/fadia/PycharmProjects/Search-Engine3",
+    "last_opened_file_path": "C:/Users/fadia/PycharmProjects/Search-Engine original fiiiinal/Search-Engine original fiiinal",
+
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\fadia\PycharmProjects\Search-Engine original\Search-Engine original\notebook\antique" />
+      <recent name="C:\Users\fadia\PycharmProjects\Search-Engine original\Search-Engine original\service\matching" />
+      <recent name="C:\Users\fadia\PycharmProjects\Search-Engine original\Search-Engine original" />
+      <recent name="C:\Users\fadia\PycharmProjects\Search-Engine (2)\Search-Engine\service\matching" />
       <recent name="C:\Users\fadia\PycharmProjects\Search-Engine" />
-      <recent name="C:\Users\fadia\PycharmProjects\Search-Engine\services\index" />
-      <recent name="C:\Users\fadia\PycharmProjects\Search-Engine\services\matching" />
-      <recent name="C:\Users\fadia\PycharmProjects\Search-Engine\services\text_preprocessing" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\fadia\PycharmProjects\Search-Engine\services" />
@@ -62,7 +65,29 @@
       <recent name="C:\Users\HP\Desktop\Search-Engine\services\pre_deployment\index" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.entry_point">
+  <component name="RunManager" selected="Python.vectore_store_match">
+    <configuration name="crawling_matching" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fastAPITesting" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/service/matching" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/service/matching/crawling_matching.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="entry_point" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fastAPITesting" />
       <option name="ENV_FILES" value="" />
@@ -85,7 +110,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="query_matching" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="matching_with_embedding_service" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fastAPITesting" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -94,11 +119,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/service/matching" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/query_matching.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/service/matching/matching_with_embedding_service.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -116,11 +141,33 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/service/text_preprocessing" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/text_preprocessor.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/service/text_preprocessing/text_preprocessor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="vectore_store_match" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fastAPITesting" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/service/matching" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/service/matching/vectore_store_match.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -131,9 +178,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.entry_point" />
-        <item itemvalue="Python.query_matching" />
+        <item itemvalue="Python.vectore_store_match" />
         <item itemvalue="Python.text_preprocessor" />
+        <item itemvalue="Python.entry_point" />
+        <item itemvalue="Python.crawling_matching" />
+        <item itemvalue="Python.matching_with_embedding_service" />
       </list>
     </recent_temporary>
   </component>

@@ -1,6 +1,6 @@
 from utils_functions.string_manager import dataset_antique, tfidf_matrix_antique, tfidf_model_antique, \
-    embedding_model_antique, document_vectors_antique, dataset_clinic, tfidf_matrix_clinic, tfidf_model_clinic, \
-    document_vectors_clinic, embedding_model_clinic
+    document_vectors_antique, dataset_clinic, tfidf_matrix_clinic, tfidf_model_clinic, \
+    document_vectors_clinic
 
 
 class DatasetTypeManager:
@@ -13,13 +13,11 @@ class DatasetTypeManager:
          self.tfidf_matrix = tfidf_matrix_antique
          self.tfidf_model = tfidf_model_antique
          self.vectors = document_vectors_antique
-         self.embedding_model = embedding_model_antique
         else:
             self.dataset = dataset_clinic
             self.tfidf_matrix = tfidf_matrix_clinic
             self.tfidf_model = tfidf_model_clinic
             self.vectors = document_vectors_clinic
-            self.embedding_model = embedding_model_clinic
 
     # def set_values(self, input_string):
     #     variable_value_pairs = input_string.split(';')
