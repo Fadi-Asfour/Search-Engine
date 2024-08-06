@@ -7,6 +7,8 @@ from nltk import pos_tag
 from nltk.corpus import wordnet
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from starlette.middleware.cors import CORSMiddleware
+
 from utils_functions.string_manager import base_host
 
 
@@ -58,20 +60,40 @@ class TextPreprocessing:
     def custom_tokenizer(self, text: str) -> List[str]:
         return self.tokenizer(text)
 
+    def process_text(self, text: str) -> List[str]:
+        text = self.preprocess(text)
+        return self.custom_tokenizer(text)
+
+
 app = FastAPI()
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 class TextRequest(BaseModel):
     text: str
+
 
 @app.post("/preprocess")
 async def preprocess_text(request: TextRequest):
     try:
         preprocessor = TextPreprocessing()
         processed_text = preprocessor.preprocess(request.text)
+        print(processed_text)
         return {"processed_text": processed_text}
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
 if __name__ == '__main__':
     import uvicorn
-    uvicorn.run("text_preprocessor:app", host=base_host, port=8006, reload=True)
+
+    uvicorn.run("text_preprocessor:app", host=base_host, port=8003, reload=True)

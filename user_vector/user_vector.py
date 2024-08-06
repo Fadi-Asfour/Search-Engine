@@ -1,6 +1,4 @@
-
-
-from word_embedding.word_embedding import WordEmbeddingAntique
+# from word_embedding.word_embedding import WordEmbeddingAntique
 import chromadb
 
 
@@ -60,32 +58,9 @@ class VectorDBHelper:
 
         for doc_id, content, dist in zip(ids, documents, distances):
             formatted_result.append({
-                'id': doc_id,
-                'content': content,
-                'distance': dist
+                # 'id': doc_id,
+                'documents': content,
+                # 'distance': dist
             })
 
         return formatted_result
-
-
-# Example usage
-
-# Create an instance of the class
-embedding_model = WordEmbeddingAntique()
-
-# Option 1: Train the model with a list of processed documents
-processed_documents = ["this is the first document", "this is the second document"]
-embedding_model.train_model(processed_documents)
-
-# Option 2: Load an existing model
-# embedding_model.load_model("word2vec_model")
-
-# Get document vectors for a list of documents
-documents = ["this is the first document", "this is a new document"]
-document_vectors = embedding_model.documents_vectors(documents)
-
-# get instance of vector db
-vector_db: VectorDBHelper = VectorDBHelper.get_instance('D:/chromadb')
-
-# insert the vectors to the database
-vector_db.insert_vectors('dataset_name', document_vectors)

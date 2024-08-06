@@ -30,28 +30,32 @@
 
 ## Libraries
 
-- Uvicorn
 - Sklearn
 - Pydantic
-- FastAPI
 - NLTK
 - Gensim
+- FastAPI
+- Uvicorn
 - chromadb
 - numpy
 
 ## Flow
 
-- User enter the query, select the dataset and then send the request.
-- Request recived by entryPoint and then redirect to the preprocess service.
-- Generate vector for processed text (query) and match it using matching service.
-- Matching service match between the query vectors and the docs vectors with word embedding.
-- Docs are sorted by cosine similarity and return the first 10 results using tf-idf matrix tf-idf model.
-- Return the results to the frontend.
+- User Query Submission:
 
-## Contributers
+  The user inputs a query, selects the relevant dataset, and sends the request.
+- Request Handling:
 
-- Fadi Asfour
-- Omar Zaghlouleh
-- Philip Droubi
-- Sham Tuameh
-- Wael Orabi
+  The request is received by the entry point, which then redirects it to the preprocessing service.
+Query Preprocessing:
+
+  The preprocessing service generates a vector representation of the processed text (query).
+- Vector Matching:
+
+  The matching service compares the query vectors to document vectors.
+- Results Sorting:
+
+  Documents are sorted based on cosine similarity scores. The top 10 results are returned using the TF-IDF model.
+- Results Delivery:
+
+  The sorted results are sent back to the frontend for display to the user.
